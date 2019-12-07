@@ -7,7 +7,7 @@ import QueueAnim from 'rc-queue-anim';
 import { Button, Icon } from 'antd';
 import './landing-page.scss'
 import image from '../../assets/images/sample.jpg';
-import logo from '../../assets/images/board.png';
+import logo from '../../assets/images/DLNN.png';
 const LandingPage = () => {
     const [isMobile, setIsMobile] = useState(false);
 

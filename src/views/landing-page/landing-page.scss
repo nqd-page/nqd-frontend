@@ -2,136 +2,159 @@ $heading-color: #0d1a26;
 $text-color: #314659;
 $text-color-secondary: #697b8c;
 $border-color: rgba(229, 231, 235, 100);
-
-html, body { height: 100%;}
+@import "../../assets/scss/responsive.scss";
+html,
+body {
+  height: 100%;
+}
 
 body {
-    line-height: 1.5;
-    color: $text-color;
-    font-size: 16px;
-    font-family: 'Roboto Mono', monospace;
-    background: #fff;
+  line-height: 1.5;
+  color: $text-color;
+  font-size: 16px;
+  font-family: "Roboto Mono", monospace;
+  background: #fff;
 }
 
 a {
-    transition: color 0.3s ease;
-    &:focus {
-      text-decoration: none;
-      text-decoration-skip: ink;
-    }
+  transition: color 0.3s ease;
+  &:focus {
+    text-decoration: none;
+    text-decoration-skip: ink;
   }
+}
 
 .banner-wrapper {
-    height: 33rem;
-    width: 100%;
-    max-width: 1280px;
+  height: 33rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  position: relative;
+  .banner-title-wrapper {
+    width: 40%;
+    max-width: 30rem;
+    height: 15rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10%;
     margin: auto;
-    position: relative;
-    .banner-title-wrapper {
-        width: 40%;
-        max-width: 30rem;
-        height: 15rem;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 10%;
-        margin: auto;
-        z-index: 1;
-        p {
-            font-size: 1.25rem;
-        }
-        .button-wrapper {
-            margin-top: 4rem;
-            line-height: 2.5rem;
-            align-items: center;
-            display: flex;
-            .btn-landing {
-                margin-left: 1rem;
-            }
-        }
+    z-index: 1;
+    img {
+      width: 300px;
     }
-    .banner-image-wrapper {
-        width: 50%;
-        max-width: 35rem;
-        height: 20rem;
-        position: absolute;
-        right: 8%;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        opacity: 0;
-
+    p {
+      font-size: 1.25rem;
+      margin-top: 30px;
+      margin-left: 30px;
     }
+    .button-wrapper {
+      margin-top: 4rem;
+      line-height: 2.5rem;
+      align-items: center;
+      display: flex;
+      .btn-landing {
+        margin-left: 1rem;
+      }
+    }
+  }
+  .banner-image-wrapper {
+    width: 50%;
+    max-width: 35rem;
+    height: 20rem;
+    position: absolute;
+    right: 8%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 //MEDIA QUERY
-//Small screen / phone
-$screen-xs-min: 480px;
-
-// Small tablets and large smartphones (landscape view)
-$screen-sm-min: 576px;
-
-// Small tablets (portrait view)
-$screen-md-min: 768px;
-
-// Tablets and small desktops
-$screen-lg-min: 992px;
-
-// Large tablets and desktops
-$screen-xl-min: 1200px;
-
-@media only screen and (max-width: $screen-xl-min) {
-   .banner-wrapper  .banner-title-wrapper {
-       p {
-           font-size: 20px;
-       }
-   } 
-}
-
-@media only screen and (max-width: $screen-lg-min) {
-    .banner-wrapper {
-        background-position: 40%;
+@include lg {
+  .banner-wrapper .banner-title-wrapper {
+    top: 107px;
+    p {
+      font-size: 20px;
     }
+  }
 }
-//FIXME: fix this to ajust all devices
-@media only screen and (max-width: $screen-md-min) {
-    .banner-image {
+
+@include md {
+  .banner-wrapper {
+    background-position: 40%;
+    .banner-title-wrapper {
+      top: 135px;
+    }
+    .banner-image-wrapper {
+      right: 0%;
+    }
+  }
+}
+@include sm {
+  .banner-image {
+    display: block;
+  }
+  .banner-wrapper {
+    width: 80%;
+    height: calc(#{"100vh - 64px"});
+    overflow: hidden;
+    .banner-title-wrapper,
+    .banner-image-wrapper {
+      display: block;
+      position: initial;
+      width: 100%;
+      height: auto;
+      .banner-image {
+        height: 300px;
+        margin-bottom: 35px;
+      }
+    }
+    .banner-title-wrapper {
+      text-align: center;
+      max-width: 480px;
+      .button-wrapper {
+        text-align: center;
         display: block;
+        margin-top: 20px;
+      }
     }
-    
-    .banner-wrapper {
-        width: 80%;
-        height: calc(#{"100vh - 64px"});
-        overflow: hidden;
-        .banner-title-wrapper,
-        .banner-image-wrapper {
-            display: block;
-            position: initial;
-            width: 100%;
-            height: auto;
-        }
-        .banner-title-wrapper {
-            text-align: center;
-            max-width: 480px;
-            .button-wrapper {
-                text-align: center;
-                display: block;
-                margin-top: 20px;
-            }
-        }
-    }
+  }
 }
 
-@media only screen and (max-width: $screen-xs-min) {
-    .banner-wrapper {
-        .banner-title-wrapper {
-            p {
-                font-size: 20px;
-            }
-            .button-wrapper .btn-landing {
-                margin-bottom: 20px;
-            }
-        }
+@include xs {
+  .banner-wrapper {
+    .banner-title-wrapper,
+    .banner-image-wrapper {
+      display: block;
+      position: initial;
+      width: 100%;
+      height: auto;
     }
+    .banner-title-wrapper {
+      p {
+        font-size: 20px;
+        text-align: center;
+      }
+      img {
+        margin-left: 30px;
+      }
+      .button-wrapper {
+        display: block;
+        margin-top: 0;
+        text-align: center;
+        .btn-landing {
+          margin-top: 10px;
+        }
+      }
+    }
+    .banner-image-wrapper {
+      .banner-image {
+        width: 317px;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
